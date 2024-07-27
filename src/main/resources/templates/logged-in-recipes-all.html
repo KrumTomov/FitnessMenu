@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+<header th:replace="~{fragments/commons::nav}"></header>
+<main>
+    <div class="container bg-blur rounded mt-1 mb-4">
+        <div class="row">
+
+            <div class="common-style col-md-4 mt-1 mb-1 ">
+                <h3 class="mySticky bg-gray text-dark mb-0 mt-2">All Recipes <span
+                        th:text="${allRecipes.size()}"></span></h3>
+                <div class="bg-white rounded m-auto recipe-container">
+                    <div th:each="recipe : ${allRecipes}" class="recipe-card">
+                        <img th:src="${recipe.imageUrl}" th:alt="${recipe.title}"/>
+                        <h3 th:text="${recipe.title}"></h3>
+                        <form th:action="@{/recipes/favorite/{id}(id=${recipe.id})}" th:method="POST"
+                              class="favorite-form">
+                            <button type="submit" class="favorite-button">
+                                <span> Favorite &#x2665; </span>
+                            </button>
+
+                            <a th:href="@{/recipes/details/{id}(id=${recipe.id})}" th:method="GET">
+                                <button type="button">Details</button>
+                            </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="common-style col-md-4 mt-1 mb-1">
+                <div>
+                    <h3 class="mySticky bg-gray text-dark mb-0 mt-2">My Recipes <span
+                            th:text="${myRecipes.size()}"></span></h3>
+                    <div class="bg-white rounded m-auto recipe-container">
+                        <div th:each="myRecipe : ${myRecipes}" class="recipe-card">
+                            <img th:src="${myRecipe.imageUrl}" th:alt="${myRecipe.title}"/>
+                            <h3 th:text="${myRecipe.title}"></h3>
+                            <form th:action="@{/recipes/delete/{id}(id=${myRecipe.id})}" th:method="DELETE"
+                                  class="recipe-form">
+                                <button type="submit" class="delete-button">Delete</button>
+
+                                <a th:href="@{/recipes/details/{id}(id=${myRecipe.id})}" th:method="GET">
+                                    <button type="button">Details</button>
+                                </a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="common-style col-md-4 mt-1 mb-1">
+                <div>
+                    <h3 class="mySticky bg-gray text-dark mb-0 mt-2">Favorite Recipes <span
+                            th:text="${favoriteRecipes.size()}"></span></h3>
+                    <div class="bg-white rounded m-auto recipe-container">
+                        <div th:each="favoriteRecipe : ${favoriteRecipes}" class="recipe-card">
+                            <img th:src="${favoriteRecipe.imageUrl}" th:alt="${favoriteRecipe.title}"/>
+                            <h3 th:text="${favoriteRecipe.title}"></h3>
+                            <form th:action="@{/recipes/remove/{id}(id=${favoriteRecipe.id})}" th:method="POST">
+                                <button type="submit" class="remove-button">Remove</button>
+
+                                <a th:href="@{/recipes/details/{id}(id=${favoriteRecipe.id})}" th:method="GET">
+                                    <button type="button">Details</button>
+                                </a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+<footer th:replace="~{fragments/commons::footer}"></footer>
+</body>
+</html>

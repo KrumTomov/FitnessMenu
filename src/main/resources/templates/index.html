@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body id="home-page">
+<header th:replace="~{fragments/commons::nav}"></header>
+<div class="text-container">
+    <p>Workout and delicious, nutritious recipes</p>
+</div>
+
+<div class="image-container">
+    <div class="image-with-caption">
+        <img src="/images/home-img1.jpg" alt="Снимка 1">
+    </div>
+    <div class="image-with-caption">
+        <img src="/images/home-img3.jpg" alt="Снимка 3">
+    </div>
+    <div class="image-with-caption">
+        <img src="/images/home-img2.jpg" alt="Снимка 2">
+    </div>
+</div>
+<footer th:replace="~{fragments/commons::footer}"></footer>
+</body>
+</html>

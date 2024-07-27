@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}">
+</head>
+<body>
+<header th:replace="~{fragments/commons::nav}"></header>
+<form class="full-screen-form" th:method="POST" th:action="@{/users/register}" th:object="${userRegisterBindingModel}">
+    <h1>Registration</h1>
+    <div class="form-row">
+
+        <div class="form-group col-md-6">
+            <label for="inputEmail4">Email</label>
+            <input th:field="*{email}"
+                   th:errorclass=" 'is-invalid bg-danger' "
+                   type="email"
+                   class="form-control"
+                   required
+                   id="inputEmail4"
+                   placeholder="Email">
+            <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                   class="text-danger invalid-feedback">Email error message</small>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="inputUsername">Username</label>
+            <input th:field="*{username}"
+                   th:errorclass=" 'is-invalid bg-danger' "
+                   type="text"
+                   class="form-control"
+                   required
+                   id="inputUsername"
+                   placeholder="Username">
+            <small th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
+                   class="text-danger invalid-feedback">Username error message</small>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="inputPassword4">Password</label>
+            <input th:field="*{password}"
+                   th:errorclass=" 'is-invalid bg-danger' "
+                   type="password"
+                   class="form-control"
+                   required
+                   id="inputPassword4"
+                   placeholder="Password">
+            <small th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                   class="text-danger invalid-feedback">Password error message</small>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="inputConfirmPassword">Confirm Password</label>
+            <input th:field="*{confirmPassword}"
+                   th:errorclass=" 'is-invalid bg-danger' "
+                   type="password"
+                   class="form-control"
+                   required
+                   id="inputConfirmPassword"
+                   placeholder="Confirm Password">
+            <small th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"
+                   class="text-danger invalid-feedback">Password error message</small>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="inputFirstName">First name</label>
+        <input th:field="*{firstName}"
+               th:errorclass=" 'is-invalid bg-danger' "
+               type="text"
+               class="form-control"
+               id="inputFirstName"
+               placeholder="First name">
+        <small th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
+               class="text-danger invalid-feedback">First name error message</small>
+    </div>
+
+    <div class="form-group">
+        <label for="inputLastName">Last name</label>
+        <input th:field="*{lastName}"
+               th:errorclass=" 'is-invalid bg-danger' "
+               type="text"
+               class="form-control" id="inputLastName"
+               placeholder="Last name">
+        <small th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+               class="text-danger invalid-feedback">Last name error message</small>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label for="inputAge">Age</label>
+            <input th:field="*{age}" th:errorclass=" 'is-invalid bg-danger' "
+                   type="number" required class="form-control" id="inputAge">
+            <small th:if="${#fields.hasErrors('age')}" th:errors="*{age}"
+                   class="text-danger invalid-feedback">Age error message</small>
+        </div>
+    </div>
+    <p>Already have an account? <a href="/users/login">Login here</a></p>
+
+    <button type="submit" class="btn btn-primary">REGISTER</button>
+</form>
+<footer th:replace="~{fragments/commons::footer}"></footer>
+</body>
+</html>

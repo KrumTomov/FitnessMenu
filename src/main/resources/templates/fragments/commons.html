@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta
+            id="csrf"
+            type="hidden"
+            th:name="${_csrf.headerName}"
+            th:value="${_csrf.token}"
+    />
+    <title>Fitness Menu</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="icon" href="/images/favicon.svg" type="image/png">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<header th:fragment="nav">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="/images/favicon.svg" alt="Fitness Menu Logo">
+            </a>
+
+            <a th:if="${#authorization.expression('isAuthenticated()')}" class="navbar-brand">
+                Welcome <span th:text="${#authentication.name}" style="font-style: italic; font-weight: bold;"></span>
+            </a>
+            <a th:unless="${#authorization.expression('isAuthenticated()')}" class="navbar-brand">
+                Enjoy your <span class="italic-text">Fitness Menu</span>
+            </a>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/recipes/all">Recipes</a>
+                    </li>
+                    <li sec:authorize="isAuthenticated()" class="nav-item">
+                        <a class="nav-link" href="/recipes/add">Add Recipe</a>
+                    </li>
+                    <li sec:authorize="isAnonymous()" class="nav-item">
+                        <a class="nav-link" href="/users/register">Register</a>
+                    </li>
+                    <li sec:authorize="isAnonymous()" class="nav-item">
+                        <a class="nav-link" href="/users/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About us</a>
+                    </li>
+                    <li sec:authorize="isAuthenticated()" class="nav-item">
+                        <a class="nav-link" href="/profile/view">Profile</a>
+                    </li>
+                    <li sec:authorize="isAuthenticated()" class="nav-item">
+                        <form th:action="@{/users/logout}" th:method="POST" class="nav-link">
+                            <button type="submit" class="btn btn-link"
+                                    style="border: none; background: none; padding: 0; text-decoration: none;color: grey">
+                                Logout
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+
+                <div sec:authorize="hasRole('ADMINISTRATOR')" class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Admin
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" th:href="@{/admin/all-users}">Users</a>
+                        <a class="dropdown-item" th:href="@{/admin/all-recipes}">Recipes</a>
+                        <a class="dropdown-item" th:href="@{/admin/inactive-users}">Inactive Users</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<footer th:fragment="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <p>Fitness Menu &copy;</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

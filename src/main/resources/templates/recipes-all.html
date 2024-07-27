@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}">
+<body>
+<header th:replace="~{fragments/commons::nav}"></header>
+<div class="recipe-container">
+    <div class="recipe-card" th:each="recipe : ${allRecipes}">
+        <img th:src="${recipe.imageUrl}" th:alt="${recipe.title}"/>
+        <h2 th:text="${recipe.title}"></h2>
+        <a th:href="@{/recipes/details/{id}(id=${recipe.id})}" th:method="GET">
+            <button type="button">Details</button>
+        </a>
+    </div>
+</div>
+<footer th:replace="~{fragments/commons::footer}"></footer>
+</body>
+</html>

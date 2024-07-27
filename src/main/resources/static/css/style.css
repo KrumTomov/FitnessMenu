@@ -1,0 +1,616 @@
+/* Home */
+.navbar-brand img {
+    width: 50px;
+    height: 50px;
+}
+
+.italic-text {
+    font-style: italic;
+    font-weight: bold;
+    display: inline-block;
+    font-family: 'Oswald', cursive;
+}
+
+.text-container {
+    text-align: center;
+    padding: 20px;
+    font-family: 'Oswald', cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    transform: skew(-10deg, 0);
+    font-size: 60px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    overflow: hidden;
+}
+
+.image-with-caption {
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    perspective: 1000px;
+    transition: transform 0.5s, box-shadow 0.5s;
+    border-radius: 50px;
+}
+
+.image-card img {
+    width: 50%;
+    height: 50%;
+    display: block;
+    border-radius: 50px;
+    transition: transform 0.5s, opacity 0.5s;
+    object-fit: cover;
+}
+
+.image-caption {
+    position: absolute;
+    flex-grow: revert;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    transition: background-color 0.5s;
+    border-radius: 50px;
+}
+
+.image-with-caption:hover {
+    transform: rotateY(10deg) scale(1.05);
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.image-card:hover img {
+    opacity: 200;
+}
+
+.image-card img {
+    opacity: 0.20;
+}
+
+.image-card:hover .image-caption {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+@media (max-width: 768px) {
+    .image-container {
+        flex-direction: column;
+    }
+
+    .image-with-caption {
+        margin: 20px 0;
+    }
+
+    .image-card img {
+        width: 10%;
+        height: 50%;
+    }
+}
+
+#home-page {
+    background: none;
+}
+
+body {
+    background: url('/images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.full-screen-form {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
+    text-align: left;
+}
+
+.full-screen-form button {
+    margin: 0 auto;
+    display: block;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#inputDescription {
+    width: 300%;
+}
+
+/* Profile */
+.profile-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.edit-button {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    background-color: transparent;
+    color: #000000;
+    border: none;
+    padding: 15px;
+    font-size: 35px;
+    cursor: pointer;
+    transition: color 0.3s;
+    transform: rotate(-290deg);
+}
+
+.edit-button:hover {
+    color: #ff5252;
+}
+
+.save-button {
+    background-color: #2196F3;
+    color:  #fff;
+    border: none;
+    padding: 10px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    position: absolute;
+    right: 40px;
+    top: 400px;
+    transition: background-color 0.3s ease;
+}
+
+.save-button:hover {
+    background-color: #1565C0;
+}
+
+
+/* Add recipes - ingredients */
+.ingredient-list {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.ingredient-input {
+    display: flex;
+    align-items: center;
+}
+
+.ingredient-input input {
+    flex: 1;
+}
+
+.ingredient-input button {
+    margin-left: 10px;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* All recipes */
+.recipe-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    margin: 20px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.recipe-card {
+    width: 600px;
+    height: 400px;
+    background-color: #fff;
+    margin: 20px;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.recipe-card:hover {
+    transform: scale(1.05);
+}
+
+.recipe-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.recipe-card h2 {
+    color: #333;
+    margin-bottom: 50px;
+    text-align: left;
+}
+
+.recipe-card p {
+    color: #777;
+    font-size: 14px;
+}
+
+.recipe-card a button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 11px 13px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    transform: translateX(-50%);
+}
+
+.recipe-card a button:hover {
+    background-color: green;
+}
+
+/* Recipe details */
+.text-details {
+    margin-top: 20px;
+}
+
+.detail-item {
+    margin-bottom: 10px;
+}
+
+.recipe-details {
+    max-width: 900px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: 30% 70%;
+    gap: 20px;
+    padding: 20px;
+}
+
+.recipe-details img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+/* About  */
+.about-us-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    max-width: 800px;
+    margin: 50px auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.about-us-container h1 {
+    color: #333;
+}
+
+.about-us-container p {
+    color: #777;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Recipes all - logged in */
+.common-style {
+    background-color: rgba(169, 169, 169, 0.7);
+}
+
+.favorite-button {
+    background-color: #ff4081;
+    color:  #fff;
+    border: none;
+    padding: 11px 13px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    left: 30px;
+    float: left;
+    transition: background-color 0.3s ease;
+}
+
+.recipe-card h3 {
+    font-size: 20px;
+    margin-bottom: 50px;
+}
+
+.favorite-button:hover {
+    background-color: darkslateblue;
+}
+
+
+.delete-button {
+    background-color: #ff5252;
+    color:  #fff;
+    border: none;
+    padding: 11px 13px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    left: 30px;
+    float: left;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: darkred;
+}
+
+.remove-button {
+    background-color: #2196F3;
+    color:  #fff;
+    border: none;
+    padding: 11px 13px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    left: 30px;
+    float: right;
+    transition: background-color 0.3s ease;
+}
+
+.remove-button:hover {
+    background-color: #1565C0;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #333333;
+}
+
+/*  Admin */
+.all-container {
+    padding-top: 100px;
+    width: 100%;
+    max-height: 850px;
+    overflow-y: auto;
+    display: block;
+    padding-left: 40px;
+    padding-right: 60px;
+    margin: 0 auto 30px;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: rgba(169, 169, 169, 0.7);
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    width: auto;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+.all-h2 {
+    background-color: rgba(169, 169, 169, 0.7);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.role-management-column {
+    position: relative;
+    width: 20%;
+}
+
+.role-management-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.role-select {
+    width: 200px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.role-selection-form {
+    margin-left: 20px;
+}
+
+.role-checkbox {
+    margin-right: 20px;
+}
+
+.delete-column {
+    width: 1%;
+}
+
+.activate-button {
+    background-color: yellowgreen;
+    border-radius: 12px;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.activate-button:hover {
+    background-color: green;
+}
+
+.deleteAdmin-button {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #ff5252;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.deleteAdmin-button:hover {
+    background-color: darkred;
+}
+
+.manage-button {
+    background-color: #2196F3;
+    color:  #fff;
+    border: none;
+    padding: 9px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    left: 170px;
+    transition: background-color 0.3s ease;
+}
+
+.manage-button:hover {
+    background-color: #1565C0;
+}
+
+/*  Comments */
+.comments {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    max-height: 270px;
+    max-width: 900px;
+    overflow-y: auto;
+    margin: 20px auto;
+    border-radius: 20px;
+}
+
+#commentForm {
+    margin-bottom: 20px;
+}
+
+#message {
+    width: 100%;
+    max-width: 50%;
+    resize: vertical;
+}
+
+.btn {
+    padding: 5px 10px;
+}
+
+.btn-post {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-post:hover {
+    background-color: #333333;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #1565C0;
+    color: white;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn :hover {
+    background-color: #333333;
+}
+

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .error-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .error-image {
+            width: 70%;
+            max-width: 1000px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .error-text {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .back-button {
+            background-color: #333333;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            border: none;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button:hover {
+            background: linear-gradient(to right, #ff5252, #cccccc);
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="error-container">
+    <img class="error-image" src="/images/error-404.jpg" alt="Error image - 404">
+    <p class="error-text">Sorry, the recipe you are looking for might be in another kitchen.</p>
+    <a href="/" class="back-button">Back to Home</a>
+</div>
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
+</body>
+</html>

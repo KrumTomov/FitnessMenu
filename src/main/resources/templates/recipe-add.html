@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+<header th:replace="~{fragments/commons::nav}"></header>
+<div class="container">
+    <form class="full-screen-form" th:action="@{/recipes/add}" th:method="POST" th:object="${recipeAddBindingModel}">
+        <h1>Create Recipe</h1>
+        <div class="form-group col-md-6">
+            <label for="inputTitle">Title</label>
+            <input th:field="*{title}"
+                   th:errorclass=" 'is-invalid bg-danger' "
+                   required
+                   min="3"
+                   type="text" class="form-control" id="inputTitle" placeholder="Title">
+            <small th:if="${#fields.hasErrors('title')}" th:errors="*{title}"
+                   class="text-danger invalid-feedback">Title error message</small>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="inputImageUrl" id="imageUrl">Image Url</label>
+            <input th:field="*{imageUrl}"
+                   name="imageUrl"
+                   type="text"
+                   id="inputImageUrl"
+                   placeholder="Image Url">
+        </div>
+
+        <div class="form-group col-md-4">
+            <label for="inputDescription">Description</label>
+            <textarea th:field="*{description}"
+                      th:errorclass=" 'is-invalid bg-danger' "
+                      required
+                      class="form-control form-control-lg" id="inputDescription" rows="3"></textarea>
+            <small th:if="${#fields.hasErrors('description')}" th:errors="*{description}"
+                   class="text-danger invalid-feedback">Description error message</small>
+
+        </div>
+
+        <div class="form-group col-md-4">
+            <label for="preparationTime">Preparation Time</label>
+            <input type="time"
+                   id="preparationTime"
+                   name="preparationTime"
+                   required
+                   th:errorclass=" 'is-invalid bg-danger' "/>
+            <small th:if="${#fields.hasErrors('preparationTime')}" th:errors="*{preparationTime}"
+                   class="text-danger invalid-feedback">Preparation Time error message</small>
+        </div>
+
+        <div class="form-group col-md-4">
+            <label for="inputCategory">Category</label>
+            <select th:field="*{category}" id="inputCategory" required class="form-control">
+                <option value="">Select category</option>
+                <option th:each="c : ${categories}" th:text="${c}" th:value="${c}">...</option>
+            </select>
+        </div>
+
+        <div class="form-group col-md-4">
+            <label for="inputIngredients" id="inputIngredients">Ingredients</label>
+            <input th:field="*{ingredientNames}" required
+                   th:errorclass=" 'is-invalid bg-danger' "
+                   type="text" id="ingredientName" placeholder="Ingredient1, Ingredient2, Ingredient3"/>
+            <small th:if="${#fields.hasErrors('ingredientNames')}" th:errors="*{ingredientNames}"
+                   class="text-danger invalid-feedback">Ingredients error message</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</div>
+<footer th:replace="~{fragments/commons::footer}"></footer>
+</body>
+</html>

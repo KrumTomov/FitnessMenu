@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+<header th:replace="~{fragments/commons::nav}"></header>
+
+<div class="all-container">
+    <h2 class="all-h2">All recipes <span
+            th:text="${recipes.size()}"></span></h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Author</th>
+            <th>Ingredients</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="recipe : ${recipes}">
+            <td th:text="${recipe.id}"></td>
+            <td>
+                <img th:src="${recipe.imageUrl}" alt="Recipe Image" width="100" height="100"/>
+            </td>
+            <td th:text="${recipe.title}"></td>
+            <td th:text="${recipe.description}"></td>
+            <td th:text="${recipe.categoryName}"></td>
+            <td th:text="${recipe.author.username}"></td>
+            <td>
+                <ul>
+                    <li th:each="ingredient : ${recipe.ingredients}" th:text="${ingredient.name}"></li>
+                </ul>
+            </td>
+
+            <td>
+                <form th:action="@{/admin/delete-recipe/{id}(id=${recipe.id})}" th:method="DELETE">
+                    <input class="deleteAdmin-button" type="submit" value="Delete"/>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
+</body>
+</html>

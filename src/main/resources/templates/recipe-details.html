@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+<header th:replace="~{fragments/commons::nav}"></header>
+
+<div class="recipe-details">
+
+    <img th:src="${recipe.imageUrl}" th:alt="${recipe.title}"/>
+
+    <div class="text-details">
+        <input type="hidden" name="recipeId" id="recipeId" th:value="${recipe.id}">
+        <h1 th:text="${recipe.title}"></h1>
+        <p th:text="${recipe.description}"></p>
+
+        <div class="detail-item">
+            <h1>Category: <span style="color: grey" th:text="${recipe.categoryName}"></span></h1>
+        </div>
+
+        <div class="detail-item">
+            <h1>Preparation Time: <span style="color: grey" th:text="${recipe.preparationTime}"></span></h1>
+        </div>
+
+        <div class="detail-item">
+            <h1>Ingredients:</h1>
+            <ul>
+                <li th:each="ingredient : ${recipe.ingredients}" th:text="${ingredient.name}"></li>
+            </ul>
+        </div>
+
+        <div class="detail-item">
+            <h1>Created by: <span style="color: grey" th:text="${recipe.author.username}"> </span></h1>
+        </div>
+    </div>
+
+    <a th:href="@{/recipes/all}">
+        <button type="button" class="back-button">Back to Recipes</button>
+    </a>
+
+</div>
+<section class="comments">
+    <h1>Comments</h1>
+
+    <div sec:authorize="isAuthenticated()">
+
+        <form id="commentForm" th:method="POST"
+              th:action="@{/api/{recipeId}/comments(recipeId=${recipe.id})}">
+            <div class="form-group">
+                <h4>Leave a comment</h4>
+                <label for="text">Message</label>
+                <textarea name="text"
+                          id="text"
+                          cols="30"
+                          rows="5"
+                          class="form-control"
+                          style="background-color: white;"></textarea>
+                <small id="messageError" class="invalid-feedback">
+                    Message error message!
+                </small>
+            </div>
+
+            <div class="form-group">
+                <input type="submit"
+                       class="btn-post"
+                       id="postComment"
+                       value="Post Comment"/>
+            </div>
+        </form>
+    </div>
+
+    <div>
+        <span id="commentCtnr"></span>
+    </div>
+</section>
+<script th:src="@{/js/comments.js}"></script>
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
+</body>
+</html>

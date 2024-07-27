@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        body {
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .error-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .error-image {
+            width: 70%;
+            max-width: 800px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .error-text {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .back-button {
+            background-color: #333333;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            border: none;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button:hover {
+            background: linear-gradient(to right, #1565C0, #cccccc);
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="error-container">
+    <img class="error-image" src="/images/error-500.jpg" alt="Error image - 500">
+    <p class="error-text">Oops, looks like something went wrong while we were handling your request.😅 Our team is on it and hustling to fix things up.</p>
+    <a href="/" class="back-button">Back to Home</a>
+</div>
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
+</body>
+</html>

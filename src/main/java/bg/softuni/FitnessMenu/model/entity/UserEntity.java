@@ -52,7 +52,7 @@ public class UserEntity extends BaseEntity {
     @Column(name = "last_login")
     private LocalDateTime lastLogin;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "users__favorite_recipes",
             joinColumns = @JoinColumn(name = "user_id"),

@@ -40,6 +40,10 @@ dependencies {
 	implementation group: 'org.modelmapper', name: 'modelmapper', version: '3.2.0'
 }
 
+tasks.named('bootBuildImage') {
+	builder = 'paketobuildpacks/builder-jammy-base:latest'
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
